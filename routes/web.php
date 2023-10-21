@@ -26,7 +26,13 @@ Route::get('/inventory', function () {
     return view('inventory.inventory');
 })->middleware(['auth', 'verified'])->name('inventory');
 
+Route::get('/reports', function () {
+    return view('inventory.reports');
+})->middleware(['auth', 'verified'])->name('reports');
 
+Route::get('/weather', function(){
+    return view('weather.weather');
+})->middleware(['auth', 'verified'])->name('weather');
 
 
 Route::middleware('auth')->group(function () {
