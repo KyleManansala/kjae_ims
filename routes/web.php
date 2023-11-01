@@ -23,13 +23,10 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+//Inventory
 Route::get('/inventory', [InventoryController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('inventory');
-
-Route::post('/inventory/search', [InventoryController::class, 'search'])
-    ->middleware(['auth', 'verified'])
-    ->name('inventory.search');
 
 Route::post('/inventory/add', [InventoryController::class, 'store'])
     ->middleware(['auth', 'verified'])
@@ -39,13 +36,13 @@ Route::delete('/inventory/delete/{id}', [InventoryController::class, 'delete'])
     ->middleware(['auth', 'verified'])
     ->name('inventory.delete');
 
+Route::get('/inventory/edit/{id}', [InventoryController::class, 'edit'])
+    ->middleware(['auth', 'verified'])
+    ->name('inventory.edit');
+
 Route::post('/inventory/update/{id}', [InventoryController::class, 'update'])
     ->middleware(['auth', 'verified'])
     ->name('inventory.update');
-
-Route::get('/reports', function () {
-    return view('inventory.reports');
-})->middleware(['auth', 'verified'])->name('reports');
 
 Route::get('/reports', function () {
     return view('inventory.reports');

@@ -3,7 +3,7 @@
     <div class="fixed inset-0 bg-slate-900 bg-opacity-30 z-50 lg:hidden lg:z-auto transition-opacity duration-200" :class="sidebarOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'" aria-hidden="true" x-cloak></div>
 
     <!-- Sidebar -->
-    <div id="sidebar" class="flex flex-col absolute z-50 left-0 inset-y-0 lg:translate-x-0 h-auto bg-neutral-600 overflow-y-scroll lg:overflow-y-auto no-scrollbar w-64 lg:w-20 lg:sidebar-expanded:!w-64 xl:!w-64 shrink-0 p-4 transition-all duration-200 ease-in-out" :class="sidebarOpen ? 'translate-x-0' : '-translate-x-64'" @click.outside="sidebarOpen = false, sidebarExpanded = false" @keydown.escape.window="sidebarOpen = false" x-cloak="lg">
+    <div id="sidebar" class="flex flex-col absolute z-50 left-0 inset-y-0 lg:translate-x-0 h-auto bg-cyan-900 overflow-y-scroll lg:overflow-y-auto no-scrollbar w-64 lg:w-20 lg:sidebar-expanded:!w-64 xl:!w-64 shrink-0 p-4 transition-all duration-200 ease-in-out" :class="sidebarOpen ? 'translate-x-0' : '-translate-x-64'" @click.outside="sidebarOpen = false, sidebarExpanded = false" @keydown.escape.window="sidebarOpen = false" x-cloak="lg">
 
         <!-- Sidebar header -->
         <div class="flex justify-between mb-10 pr-3 sm:px-2">
@@ -28,7 +28,7 @@
                     @php
                     $dashboardActive = in_array(Request::segment(1), ['dashboard']);
                     @endphp
-                    <li class="px-3 py-2 rounded-sm mb-0.5 last:mb-0 {{ $dashboardActive ? 'bg-slate-900' : '' }}" x-data="{ open: {{ $dashboardActive ? 1 : 0 }} }">
+                    <li class="px-3 py-2 rounded-sm mb-0.5 last:mb-0 {{ $dashboardActive ? 'bg-slate-800' : '' }}" x-data="{ open: {{ $dashboardActive ? 1 : 0 }} }">
                         <a class="block text-white hover:text-slate-200 transition duration-150 truncate @if(Route::is('dashboard')){{ 'text-white' }}@endif" href="{{ route('dashboard') }}">
                             <div class="flex items-center justify-between">
                                 <div class="flex items-center">
@@ -49,7 +49,7 @@
                     @php
                     $inventoryActive = in_array(Request::segment(1), ['inventory']);
                     @endphp
-                    <li class="px-3 py-2 rounded-sm mb-0.5 last:mb-0 {{ $inventoryActive ? 'bg-slate-900' : '' }}" x-data="{ open: {{ $inventoryActive ? 1 : 0 }} }">
+                    <li class="px-3 py-2 rounded-sm mb-0.5 last:mb-0 {{ $inventoryActive ? 'bg-slate-800' : '' }}" x-data="{ open: {{ $inventoryActive ? 1 : 0 }} }">
                         <a class="block text-white hover:text-slate-200 transition duration-150 truncate @if(Route::is('inventory')){{ 'text-white' }}@endif" href="{{ route('inventory') }}">
                             <div class="flex items-center justify-between">
                                 <div class="flex items-center">
