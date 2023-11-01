@@ -1,4 +1,5 @@
-<div>
+
+
     <!-- Sidebar backdrop (mobile only) -->
     <div class="fixed inset-0 bg-slate-900 bg-opacity-30 z-50 lg:hidden lg:z-auto transition-opacity duration-200" :class="sidebarOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'" aria-hidden="true" x-cloak></div>
 
@@ -19,6 +20,12 @@
 
         <!-- Links -->
         <div class="space-y-8">
+            <div class="shrink-0 flex items-center ">
+                <a href="{{ url('/dashboard') }}">
+                    <x-application-logo class="block h-9 w-auto fill-current text-white dark:text-gray-200" />
+                </a>
+            </div>
+
             <!-- Pages group -->
             <div>
 
@@ -50,7 +57,7 @@
                     $inventoryActive = in_array(Request::segment(1), ['inventory']);
                     @endphp
                     <li class="px-3 py-2 rounded-sm mb-0.5 last:mb-0 {{ $inventoryActive ? 'bg-slate-800' : '' }}" x-data="{ open: {{ $inventoryActive ? 1 : 0 }} }">
-                        <a class="block text-white hover:text-slate-200 transition duration-150 truncate @if(Route::is('inventory')){{ 'text-white' }}@endif" href="{{ route('inventory') }}">
+                        <a class="block text-white hover:text-slate-200 transition duration-150 truncate @if(Route::is('inventory.index')){{ 'text-white' }}@endif" href="{{ route('inventory.index') }}">
                             <div class="flex items-center justify-between">
                                 <div class="flex items-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -64,7 +71,30 @@
                     </li>
                 </ul>
 
-                
+                <ul class="mt-3">
+                    <!-- Category -->
+                    @php
+                    $categoryActive = in_array(Request::segment(1), ['category']);
+                    @endphp
+                    <li class="px-3 py-2 rounded-sm mb-0.5 last:mb-0 {{ $categoryActive ? 'bg-slate-800' : '' }}" x-data="{ open: {{ $categoryActive ? 1 : 0 }} }">
+                        <a class="block text-white hover:text-slate-200 transition duration-150 truncate @if(Route::is('category.index')){{ 'text-white' }}@endif" href="{{ route('category.index') }}">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z" />
+                                    </svg>
+
+
+                                    <span class="text-sm font-medium ml-3 lg:opacity-100 2xl:opacity-100 duration-200">Category</span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+
+
+
                 <ul class="mt-3">
                     <!-- Reports -->
                     @php
@@ -78,44 +108,44 @@
                                         <line x1="18" y1="20" x2="18" y2="10"></line>
                                         <line x1="12" y1="20" x2="12" y2="4"></line>
                                         <line x1="6" y1="20" x2="6" y2="14"></line>
-                                      </svg>
-                
+                                    </svg>
+
                                     <span class="text-sm font-medium ml-3 lg:opacity-100 2xl:opacity-100 duration-200">Reports</span>
                                 </div>
                             </div>
                         </a>
                     </li>
-                </ul>   
+                </ul>
 
 
-            <ul class="mt-3">
-                <!-- Weather -->
-                @php
-                $weatherActive = in_array(Request::segment(1), ['weather']);
-                @endphp
-                <li class="px-3 py-2 rounded-sm mb-0.5 last:mb-0 {{ $weatherActive ? 'bg-slate-800' : '' }}" x-data="{ open: {{ $weatherActive ? 1 : 0 }} }">
-                    <a class="block text-white hover:text-slate-200 transition duration-150 truncate @if(Route::is('weather')){{ 'text-white' }}@endif" href="{{ route('weather') }}">
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
-                                </svg>
-            
-                                <span class="text-sm font-medium ml-3 lg:opacity-100 2xl:opacity-100 duration-200">Weather</span>
+                <ul class="mt-3">
+                    <!-- Weather -->
+                    @php
+                    $weatherActive = in_array(Request::segment(1), ['weather']);
+                    @endphp
+                    <li class="px-3 py-2 rounded-sm mb-0.5 last:mb-0 {{ $weatherActive ? 'bg-slate-800' : '' }}" x-data="{ open: {{ $weatherActive ? 1 : 0 }} }">
+                        <a class="block text-white hover:text-slate-200 transition duration-150 truncate @if(Route::is('weather')){{ 'text-white' }}@endif" href="{{ route('weather') }}">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
+                                    </svg>
+
+                                    <span class="text-sm font-medium ml-3 lg:opacity-100 2xl:opacity-100 duration-200">Weather</span>
+                                </div>
                             </div>
-                        </div>
-                    </a>
-                </li>
-            </ul>
+                        </a>
+                    </li>
+                </ul>
 
 
-        
 
 
-        </div>
+
+            </div>
 
 
-            
+
 
 
             <!-- Expand / collapse button -->
@@ -132,4 +162,3 @@
             </div>
         </div>
     </div>
-</div>

@@ -3,72 +3,99 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Categories;
-use App\Models\Products;
+
+use App\Models\Inventory;
+use App\Models\Category;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class InventoryController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
     public function index()
     {
-        $categories = Categories::all();
-        $products = Products::with('category')->get();
+        $categories = Category::all();
+        $inventories = Inventory::with('category')->get();
         
-        return view('inventory.inventory', compact('categories', 'products'));
+        return view('inventory.inventory', compact('inventories', 'categories'));
     }
 
+    /**
+     * Show the form for creating a new resource.
+     */
     public function create()
     {
-        $categories = Categories::all();
+        $categories = Category::all();
         return view('inventory.add', compact('categories'));
     }
 
+    /**
+     * Store a newly created resource in storage.
+     */
     public function store(Request $request)
     {
-        $existingProduct = Products::where('product_name', $request->productName)->first();
+        $existingProduct = Inventory::where('product_name', $request->productName)->first();
         if ($existingProduct) {
             Alert::error('Error', 'Product already exists.')->persistent(false)->autoclose(5000);
             return redirect()->back();
         }
 
-        $product = new Products();
-        $product->product_name = $request->productName;
-        $product->category_id = $request->category;
-        $product->product_quantity = $request->productQuantity;
-        $product->price = $request->price;
-        $product->save();
+        $inventory = new Inventory();
+        $inventory->product_name = $request->productName;
+        $inventory->category_id = $request->category;
+        $inventory->product_quantity = $request->productQuantity;
+        $inventory->price = $request->price;
+        $inventory->save();
+    
+        Alert::success('Success', 'Product added successfully.')->persistent(false)->autoclose(5000);
+        return redirect()->route('inventory.index');
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(Inventory $inventory)
+    {
+        return response()->json($inventory);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Inventory $inventory)
+    {
+        return response()->json($inventory);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, Inventory $inventory)
+    {
+        // Insert Validation
+        $inventory->product_name = $request->productName;
+        $inventory->category_id = $request->category;
+        $inventory->product_quantity = $request->productQuantity;
+        $inventory->price = $request->price;
+        $inventory->save();
         
-        // Alert::success('Success', 'Product added successfully.')->persistent(false)->autoclose(5000);
-        return redirect()->route('inventory');
-    }
-
-    public function edit($id)
-    {
-        $product = Products::find($id);
-        return response()->json($product);
-    }
-
-    public function update(Request $request, $id)
-    {
-        $product = Products::find($id);
-        if ($product) {
-            $product->product_name = $request->productName;
-            $product->category_id = $request->category;
-            $product->product_quantity = $request->productQuantity;
-            $product->price = $request->price;
-            $product->save();
-        }
         Alert::success('Success', 'Product updated successfully.')->persistent(false)->autoclose(5000);
-        return redirect()->route('inventory');
+        return redirect()->route('inventory.index');
     }
 
-    public function delete($id)
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Inventory $inventory)
     {
-        $product = Products::find($id);
-        if ($product) {
-            $product->delete();
+        try {
+            $inventory->delete();
+            Alert::success('Success', 'Product deleted successfully.')->persistent(false)->autoclose(5000);
+        return redirect()->route('inventory.index');
         }
-        Alert::success('Success', 'Product deleted successfully.')->persistent(false)->autoclose(5000);
-        return redirect()->route('inventory');
+        catch(\Exception $e) {
+
+        }
     }
 }

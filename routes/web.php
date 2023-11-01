@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\InventoryController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,25 +25,34 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 //Inventory
-Route::get('/inventory', [InventoryController::class, 'index'])
-    ->middleware(['auth', 'verified'])
-    ->name('inventory');
+// Route::get('/inventory', [InventoryController::class, 'index'])
+//     ->middleware(['auth', 'verified'])
+//     ->name('inventory');
 
-Route::post('/inventory/add', [InventoryController::class, 'store'])
-    ->middleware(['auth', 'verified'])
-    ->name('inventory.add');
+// Route::post('/inventory/add', [InventoryController::class, 'store'])
+//     ->middleware(['auth', 'verified'])
+//     ->name('inventory.add');
 
-Route::delete('/inventory/delete/{id}', [InventoryController::class, 'delete'])
-    ->middleware(['auth', 'verified'])
-    ->name('inventory.delete');
+// Route::delete('/inventory/delete/{id}', [InventoryController::class, 'delete'])
+//     ->middleware(['auth', 'verified'])
+//     ->name('inventory.delete');
 
-Route::get('/inventory/edit/{id}', [InventoryController::class, 'edit'])
-    ->middleware(['auth', 'verified'])
-    ->name('inventory.edit');
+// Route::get('/inventory/edit/{id}', [InventoryController::class, 'edit'])
+//     ->middleware(['auth', 'verified'])
+//     ->name('inventory.edit');
 
-Route::post('/inventory/update/{id}', [InventoryController::class, 'update'])
-    ->middleware(['auth', 'verified'])
-    ->name('inventory.update');
+// Route::post('/inventory/update/{id}', [InventoryController::class, 'update'])
+//     ->middleware(['auth', 'verified'])
+//     ->name('inventory.update');
+
+//inventory
+Route::resource("inventory", InventoryController::class);
+
+
+//category
+Route::resource("category", CategoryController::class);
+
+
 
 Route::get('/reports', function () {
     return view('inventory.reports');

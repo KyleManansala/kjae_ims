@@ -1,9 +1,9 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100 sticky top-0" >
+<nav x-data="{ open: false }" class="bg-white border-b border-gray-100 sticky top-0 z-30">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
-            <div class="flex items-center">
+                <div class="flex items-center">
                     <button class="text-slate-500 hover:text-slate-600 lg:hidden" @click.stop="sidebarOpen = !sidebarOpen" aria-controls="sidebar" :aria-expanded="sidebarOpen">
                         <span class="sr-only">Open sidebar</span>
                         <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -13,22 +13,18 @@
                         </svg>
                     </button>
                 </div>
+
                 <!-- Logo -->
-                <div class="shrink-0 flex items-center">
-                    <a href="{{ url('/') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
-                    </a>
-                </div>
 
                 <!-- Navigation Links -->
-                
+
             </div>
             <div class="flex items-center space-x-3">
-            <!-- Settings Dropdown -->
-            <x-navbar.navbar-profile align="right" />
+                <!-- Settings Dropdown -->
+                <x-navbar.navbar-profile />
 
-</div>
-        
-        
-    </div>
+            </div>
+
+
+        </div>
 </nav>

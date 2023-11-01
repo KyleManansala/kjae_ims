@@ -10,6 +10,9 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
         <!-- Scripts -->
         @vite(['resources/css/app.css','resources/js/app.js'])
+        <!-- title -->
+        <title>{{ ucwords(str_replace([".", "-", "client", "admin", "index", "edit", "show", "create"], " ", Route::current()->getName()))." | ".config('app.name', 'Laravel') }}</title>
+        
     </head>
     <body class="font-sans antialiased">
     <div class="fixed inset-0 font-inter antialiased bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400 overflow-y-hidden"
