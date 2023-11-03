@@ -93,14 +93,14 @@
                         <tr>
                             <td class="text-center px-6 py-4">{{$category->id}}</td>
                             <td class="text-center text-sm px-6 py-4">{{ $category->category_name }}</td>
-                            <td class=" whitespace-nowrap px-6 py-4">
-                            <div class="flex justify-center items-center space-x-4">
+                            <td>
+                            <div class="flex justify-center">
                                     <button onclick="showEditModal('{{ $category->id }}')" class="bg-orange-600 hover:bg-orange-700 text-white font-bold h-10 py-1 px-3 rounded mr-2">Edit</button>
-                                <form method="POST" action="{{ route('category.destroy', $category) }}" class="mb-0">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="bg-red-600 hover:bg-red-700 text-white font-bold h-10 py-1 px-3 rounded">Delete</button>
-                                    </form>
+									<form method="POST" action="{{ route('category.destroy', $category) }}" onsubmit="return confirm('Are you sure you want to delete this item?')">
+										@csrf
+										@method('DELETE')
+										<button type="submit" class="bg-red-600 hover:bg-red-700 text-white font-bold h-10 py-1 px-3 rounded">Delete</button>
+									</form>
                             </div>
                             </td>
                         </tr>

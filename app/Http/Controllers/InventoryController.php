@@ -10,9 +10,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class InventoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    //Display list
     public function index()
     {
         $categories = Category::all();
@@ -21,18 +19,14 @@ class InventoryController extends Controller
         return view('inventory.inventory', compact('inventories', 'categories'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    //Create
     public function create()
     {
         $categories = Category::all();
         return view('inventory.add', compact('categories'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    //Store
     public function store(Request $request)
     {
         $existingProduct = Inventory::where('product_name', $request->productName)->first();
@@ -52,25 +46,19 @@ class InventoryController extends Controller
         return redirect()->route('inventory.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
+    //Show
     public function show(Inventory $inventory)
     {
         return response()->json($inventory);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+    //Edit
     public function edit(Inventory $inventory)
     {
         return response()->json($inventory);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+    //Update
     public function update(Request $request, Inventory $inventory)
     {
         // Insert Validation
@@ -84,18 +72,17 @@ class InventoryController extends Controller
         return redirect()->route('inventory.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    //Delete
     public function destroy(Inventory $inventory)
     {
         try {
-            $inventory->delete();
-            Alert::success('Success', 'Product deleted successfully.')->persistent(false)->autoclose(5000);
-        return redirect()->route('inventory.index');
-        }
-        catch(\Exception $e) {
-
-        }
+                $inventory->delete();
+                Alert::success('Success', 'Product deleted successfully.')->persistent(false)->autoclose(5000);
+                return redirect()->route('inventory.index');
+            }
+             catch (\Exception $e) {
+                
+             }
+        
     }
 }

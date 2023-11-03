@@ -6,13 +6,14 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css">
 <!-- Title -->
+<title>Categories</title>
 <!-- <title>Category</title> -->
 
 
 
 <x-app-layout>
     <x-slot name="header">
-        <x-header title="Category" />
+        <x-header title="Categories" />
     </x-slot>
 
     <!-- Include SweetAlert-->

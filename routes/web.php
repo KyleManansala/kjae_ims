@@ -24,30 +24,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-//Inventory
-// Route::get('/inventory', [InventoryController::class, 'index'])
-//     ->middleware(['auth', 'verified'])
-//     ->name('inventory');
-
-// Route::post('/inventory/add', [InventoryController::class, 'store'])
-//     ->middleware(['auth', 'verified'])
-//     ->name('inventory.add');
-
-// Route::delete('/inventory/delete/{id}', [InventoryController::class, 'delete'])
-//     ->middleware(['auth', 'verified'])
-//     ->name('inventory.delete');
-
-// Route::get('/inventory/edit/{id}', [InventoryController::class, 'edit'])
-//     ->middleware(['auth', 'verified'])
-//     ->name('inventory.edit');
-
-// Route::post('/inventory/update/{id}', [InventoryController::class, 'update'])
-//     ->middleware(['auth', 'verified'])
-//     ->name('inventory.update');
-
 //inventory
 Route::resource("inventory", InventoryController::class);
-
 
 //category
 Route::resource("category", CategoryController::class);
@@ -57,6 +35,10 @@ Route::resource("category", CategoryController::class);
 Route::get('/reports', function () {
     return view('inventory.reports');
 })->middleware(['auth', 'verified'])->name('reports');
+
+Route::get('/tips', function () {
+    return view('tips.tips');
+})->middleware(['auth', 'verified'])->name('tips');
 
 Route::get('/weather', function(){
     return view('weather.weather');

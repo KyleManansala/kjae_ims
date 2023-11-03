@@ -6,7 +6,8 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css">
 <!-- Title -->
-<!-- <title>Inventory</title> -->
+<title>Inventory</title>
+
 
 
 <!-- Main Page -->
@@ -133,17 +134,19 @@
             document.getElementById('editProductModal').classList.add('hidden');
         }
 
-
         //Datatables
         $(document).ready(function() {
 
 			var table = $('#productsTable').DataTable({
 					responsive: true
+                    // lengthMenu: [ [10, 25, 50, -1], [10, 25, 50, "All"] ], // Define available page lengths
+                    // pageLength: 10 // Set the default page length
 				})
                 
 				.columns.adjust()
 				.responsive.recalc();
 		});
+
     </script>
 
 

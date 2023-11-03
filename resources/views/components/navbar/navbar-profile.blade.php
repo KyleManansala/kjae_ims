@@ -28,9 +28,6 @@
 
             <div class="pt-0.5 pb-2 px-3 mb-1 border-b border-slate-200 dark:border-slate-700">
                 <div class="font-medium text-slate-800 dark:text-slate-100">{{ Auth::user()->name }}</div>
-                <div class="text-xs text-slate-500 dark:text-slate-400 italic">
-                   Admin
-                </div>
             </div>
             <ul>
                 <x-dropdown-link :href="route('profile.edit')">

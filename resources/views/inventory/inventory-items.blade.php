@@ -95,16 +95,16 @@
                         <tr>
                             <td class="text-center text-sm">{{ $inventory->product_name }}</td>
                             <td class="text-center text-sm">{{ optional($inventory->category)->category_name }}</td>
-                            <td class="text-center text-sm font-bold">{{ $inventory->product_quantity }}</td>
-                            <td class="text-center text-sm font-bold">{{ $inventory->price }}</td>
+                            <td class="text-center text-sm">{{ $inventory->product_quantity }}</td>
+                            <td class="text-center text-sm font-bold">PHP {{ $inventory->price }}</td>
                             <td class="text-center text-sm">
                                 <div class="flex">
                                     <button onclick="showEditModal('{{ $inventory->id }}')" class="bg-orange-600 hover:bg-orange-700 text-white font-bold h-10 py-1 px-3 rounded mr-2">Edit</button>
-                                    <form method="POST" action="{{ route('inventory.destroy', $inventory) }}">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="bg-red-600 hover:bg-red-700 text-white font-bold h-10 py-1 px-3 rounded">Delete</button>
-                                    </form>
+									<form method="POST" action="{{ route('inventory.destroy', $inventory) }}" onsubmit="return confirm('Are you sure you want to delete this item?')">
+										@csrf
+										@method('DELETE')
+										<button type="submit" class="bg-red-600 hover:bg-red-700 text-white font-bold h-10 py-1 px-3 rounded">Delete</button>
+									</form>
                                 </div>
                             </td>
                         </tr>

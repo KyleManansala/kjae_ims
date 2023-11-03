@@ -4,7 +4,7 @@
     <div class="fixed inset-0 bg-slate-900 bg-opacity-30 z-50 lg:hidden lg:z-auto transition-opacity duration-200" :class="sidebarOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'" aria-hidden="true" x-cloak></div>
 
     <!-- Sidebar -->
-    <div id="sidebar" class="flex flex-col absolute z-50 left-0 inset-y-0 lg:translate-x-0 h-auto bg-cyan-900 overflow-y-scroll lg:overflow-y-auto no-scrollbar w-64 lg:w-20 lg:sidebar-expanded:!w-64 xl:!w-64 shrink-0 p-4 transition-all duration-200 ease-in-out" :class="sidebarOpen ? 'translate-x-0' : '-translate-x-64'" @click.outside="sidebarOpen = false, sidebarExpanded = false" @keydown.escape.window="sidebarOpen = false" x-cloak="lg">
+    <div id="sidebar" class="flex flex-col absolute z-50 left-0 inset-y-0 lg:translate-x-0 h-auto bg-gray-950 overflow-y-scroll lg:overflow-y-auto no-scrollbar w-64 lg:w-20 lg:sidebar-expanded:!w-64 xl:!w-64 shrink-0 p-4 transition-all duration-200 ease-in-out" :class="sidebarOpen ? 'translate-x-0' : '-translate-x-64'" @click.outside="sidebarOpen = false, sidebarExpanded = false" @keydown.escape.window="sidebarOpen = false" x-cloak="lg">
 
         <!-- Sidebar header -->
         <div class="flex justify-between mb-10 pr-3 sm:px-2">
@@ -20,11 +20,7 @@
 
         <!-- Links -->
         <div class="space-y-8">
-            <div class="shrink-0 flex items-center ">
-                <a href="{{ url('/dashboard') }}">
-                    <x-application-logo class="block h-9 w-auto fill-current text-white dark:text-gray-200" />
-                </a>
-            </div>
+
 
             <!-- Pages group -->
             <div>
@@ -86,7 +82,7 @@
                                     </svg>
 
 
-                                    <span class="text-sm font-medium ml-3 lg:opacity-100 2xl:opacity-100 duration-200">Category</span>
+                                    <span class="text-sm font-medium ml-3 lg:opacity-100 2xl:opacity-100 duration-200">Categories</span>
                                 </div>
                             </div>
                         </a>
@@ -117,6 +113,24 @@
                     </li>
                 </ul>
 
+                
+                <ul class="mt-3">
+                    <!-- Tips -->
+                    @php
+                    $tipsActive = in_array(Request::segment(1), ['tips']);
+                    @endphp
+                    <li class="px-3 py-2 rounded-sm mb-0.5 last:mb-0 {{ $tipsActive ? 'bg-slate-800' : '' }}" x-data="{ open: {{ $tipsActive ? 1 : 0 }} }">
+                        <a class="block text-white hover:text-slate-200 transition duration-150 truncate @if(Route::is('tips')){{ 'text-white' }}@endif" href="{{ route('tips') }}">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bookmark"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+
+                                    <span class="text-sm font-medium ml-3 lg:opacity-100 2xl:opacity-100 duration-200">Tips</span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
 
                 <ul class="mt-3">
                     <!-- Weather -->

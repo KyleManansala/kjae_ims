@@ -1,7 +1,9 @@
-<title>Reports</title>
+<title>Tips</title>
+
+
 <x-app-layout>
     <x-slot name="header">
-        <x-header title="Reports" />
+        <x-header title="Tips" />
     </x-slot>
 
 
