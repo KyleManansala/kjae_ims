@@ -19,7 +19,7 @@
     <!-- Include SweetAlert-->
     @include('sweetalert::alert')
 
-    <button onclick="showModal()" class="bg-green-800 hover:bg-green-900 text-white font-bold py-2 px-4 rounded">Add Category</button>
+    <button onclick="showModal()" class="bg-slate-800 hover:bg-slate-900 text-white font-bold py-2 px-4 rounded">Add Category</button>
 
 
     <!-- datatable -->
@@ -41,7 +41,7 @@
                         <label for="categoryName" class="block text-gray-700 text-sm font-bold mb-2">Category Name</label>
                         <input type="text" class="w-full p-2 border border-gray-300 rounded text-gray-700" id="categoryName" name="categoryName" required>
                     </div>
-                    <button type="submit" class="bg-green-800 hover:bg-green-900 text-white font-bold py-2 px-4 rounded">Add Category</button>
+                    <button type="submit" class="bg-slate-800 hover:bg-slate-900 text-white font-bold py-2 px-4 rounded">Add Category</button>
                 </form>
             </div>
         </div>
@@ -62,7 +62,7 @@
                             <input type="text" class="w-full p-2 border border-gray-300 rounded text-gray-700" id="editCategoryName" name="categoryName">
                         </div>
                     </div>
-                    <button type="submit" class="bg-green-800 hover:bg-green-900 text-white font-bold py-2 px-4 rounded">Update Category</button>
+                    <button type="submit" class="bg-slate-800 hover:bg-slate-900 text-white font-bold py-2 px-4 rounded">Update Category</button>
                 </form>
             </div>
         </div>

@@ -40,7 +40,7 @@
 			box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
 			font-weight: 700;
 			border-radius: .25rem;
-			background: #166534 !important;
+			background: #1e293b !important;
 			border: 1px solid transparent;
 		}
 
@@ -58,7 +58,7 @@
 			box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
 			font-weight: 700;
 			border-radius: .25rem;
-			background: #166534 !important;
+			background: #1e293b !important;
 			border: 1px solid transparent;
 		}
         
@@ -70,11 +70,11 @@
 			margin-bottom: 0.75em;
 		}
 
-		/*Change colour of responsive icon*/
+		/* Change colour of responsive icon
 		table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before,
 		table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
 			background-color: #4F6F52 !important;
-		}
+		} */
 	</style>  
   
   <!-- Table -->
@@ -83,10 +83,12 @@
                 <table id="productsTable" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                     <thead>
                         <tr>
-                            <th>Product Name</th>
+                            <th>Name</th>
                             <th>Category</th>
-                            <th>Product Quantity</th>
+                            <th>Quantity</th>
                             <th>Price</th>
+							<th>Created At</th>
+							<th>Updated</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -96,7 +98,9 @@
                             <td class="text-center text-sm">{{ $inventory->product_name }}</td>
                             <td class="text-center text-sm">{{ optional($inventory->category)->category_name }}</td>
                             <td class="text-center text-sm">{{ $inventory->product_quantity }}</td>
-                            <td class="text-center text-sm font-bold">PHP {{ $inventory->price }}</td>
+                            <td class="text-center text-sm">PHP {{ $inventory->price }}</td>
+							<td class="text-center text-sm">{{ ($inventory->created_at)->format('M d, Y H:i:s') }}</td>
+							<td class="text-center text-sm">{{ ($inventory->updated_at)->diffForHumans() }}</td>
                             <td class="text-center text-sm">
                                 <div class="flex">
                                     <button onclick="showEditModal('{{ $inventory->id }}')" class="bg-orange-600 hover:bg-orange-700 text-white font-bold h-10 py-1 px-3 rounded mr-2">Edit</button>

@@ -18,12 +18,48 @@
      <!-- Include SweetAlert-->
      @include('sweetalert::alert')
      
-    <button onclick="showModal()" class="bg-green-800 hover:bg-green-900 text-white font-bold py-2 px-4 rounded">Add Product</button>
+    <button onclick="showModal()" class="bg-slate-800 hover:bg-slate-900 text-white font-bold py-2 px-4 rounded">Add Product</button>
     
     <!-- datatable -->
      @include('inventory.inventory-items')
       
      
+        <!-- Add Modal -->
+        <div class="modal fixed w-full h-full top-0 left-0 flex items-center justify-center hidden" id="addProductModal">
+            <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50" onclick="hideModal()"></div>
+    
+            <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+                <div class="modal-content py-4 text-left px-6">
+                    <form method="POST" action="{{ route('inventory.store') }}">
+                        @csrf
+                        <div class="mb-4">
+                            <label for="productName" class="block text-gray-700 text-sm font-bold mb-2">Product Name</label>
+                            <input type="text" class="w-full p-2 border border-gray-300 rounded text-gray-700" id="productName" name="productName" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="category" class="block text-gray-700 text-sm font-bold mb-2">Category</label>
+                            <select class="w-full p-2 border border-gray-300 rounded text-gray-700" id="category" name="category" required>
+                                <option value="">Select...</option>
+                                @foreach($categories as $category)
+                                    <option value="{{$category->id}}">{{$category->category_name}}</option>
+                                @endforeach
+                                @required(true)
+                            </select>
+                        </div>
+                        <div class="mb-4">
+                            <label for="productQuantity" class="block text-gray-700 text-sm font-bold mb-2">Product Quantity</label>
+                            <input type="number" class="w-full p-2 border border-gray-300 rounded text-gray-700" id="productQuantity" name="productQuantity" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="price" class="block text-gray-700 text-sm font-bold mb-2">Price</label>
+                            <input type="number" class="w-full p-2 border border-gray-300 rounded text-gray-700" id="price" name="price" step="0.01" required>
+                        </div>
+                        <button type="submit" class="bg-slate-800 hover:bg-slate-900 text-white font-bold py-2 px-4 rounded">Add Product</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
      
    <!-- Edit Modal -->
    <div class="modal fixed w-full h-full top-0 left-0 flex items-center justify-center hidden"id="editProductModal">
@@ -57,49 +93,12 @@
                                 <input type="number" class="w-full p-2 border border-gray-300 rounded text-gray-700" id="editPrice" name="price" step="0.01">
                             </div>
                         </div>
-                        <button type="submit" class="bg-green-800 hover:bg-green-900 text-white font-bold py-2 px-4 rounded">Update Product</button>
+                        <button type="submit" class="bg-slate-800 hover:bg-slate-900 text-white font-bold py-2 px-4 rounded">Update Product</button>
                     </form>
                 </div>
             </div>
         </div>
 
-        <!-- Add Modal -->
-    <div class="modal fixed w-full h-full top-0 left-0 flex items-center justify-center hidden" id="addProductModal">
-        <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50" onclick="hideModal()"></div>
-
-        <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
-            <div class="modal-content py-4 text-left px-6">
-                <form method="POST" action="{{ route('inventory.store') }}">
-                    @csrf
-                    <div class="mb-4">
-                        <label for="productName" class="block text-gray-700 text-sm font-bold mb-2">Product Name</label>
-                        <input type="text" class="w-full p-2 border border-gray-300 rounded text-gray-700" id="productName" name="productName" required>
-                    </div>
-                    <div class="mb-4">
-                        <label for="category" class="block text-gray-700 text-sm font-bold mb-2">Category</label>
-                        <select class="w-full p-2 border border-gray-300 rounded text-gray-700" id="category" name="category" required>
-                            <option value="">Select...</option>
-                            @foreach($categories as $category)
-                                <option value="{{$category->id}}">{{$category->category_name}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="mb-4">
-                        <label for="productQuantity" class="block text-gray-700 text-sm font-bold mb-2">Product Quantity</label>
-                        <input type="number" class="w-full p-2 border border-gray-300 rounded text-gray-700" id="productQuantity" name="productQuantity" required>
-                    </div>
-                    <div class="mb-4">
-                        <label for="price" class="block text-gray-700 text-sm font-bold mb-2">Price</label>
-                        <input type="number" class="w-full p-2 border border-gray-300 rounded text-gray-700" id="price" name="price" step="0.01" required>
-                    </div>
-                    <button type="submit" class="bg-green-800 hover:bg-green-900 text-white font-bold py-2 px-4 rounded">Add Product</button>
-                </form>
-            </div>
-        </div>
-    </div>
-    
-
-    
 
     <!-- Functions -->
     <script>

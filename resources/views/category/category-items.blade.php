@@ -40,7 +40,7 @@
 			box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
 			font-weight: 700;
 			border-radius: .25rem;
-			background: #166534 !important;
+			background: #1e293b!important;
 			border: 1px solid transparent;
 		}
 
@@ -58,7 +58,7 @@
 			box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
 			font-weight: 700;
 			border-radius: .25rem;
-			background: #166534 !important;
+			background: #1e293b!important;
 			border: 1px solid transparent;
 		}
         
@@ -71,10 +71,10 @@
 		}
 
 		/*Change colour of responsive icon*/
-		table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before,
+		/* table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before,
 		table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
 			background-color: #4F6F52 !important;
-		}
+		} */
 	</style>  
 
 <!-- Table -->

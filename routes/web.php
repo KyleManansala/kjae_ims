@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\WeatherController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,9 +41,9 @@ Route::get('/tips', function () {
     return view('tips.tips');
 })->middleware(['auth', 'verified'])->name('tips');
 
-Route::get('/weather', function(){
-    return view('weather.weather');
-})->middleware(['auth', 'verified'])->name('weather');
+//Display weather
+Route::get('/weather', [WeatherController::class, 'checkWeather'])->middleware(['auth', 'verified'])->name('weather');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -4,7 +4,7 @@
 
     <div class="relative inline-flex" x-data="{ open: false }">
         <button class="inline-flex justify-center items-center group" aria-haspopup="true" @click.prevent="open = !open" :aria-expanded="open">
-            <div class="w-8 h-8 rounded-full bg-indigo-500 text-white flex items-center justify-center">
+            <div class="w-8 h-8 rounded-full bg-slate-800 text-white flex items-center justify-center">
                 {{ substr(Auth::user()->name, 0, 1) }}
             </div>
             <div class="flex items-center truncate">
@@ -30,14 +30,14 @@
                 <div class="font-medium text-slate-800 dark:text-slate-100">{{ Auth::user()->name }}</div>
             </div>
             <ul>
-                <x-dropdown-link :href="route('profile.edit')">
+                <x-dropdown-link class="text-white hover:text-black"  :href="route('profile.edit')">
                     {{ __('Profile') }}
                 </x-dropdown-link>
                 <li>
                     <form method="POST" action="{{ route('logout') }}" x-data>
                         @csrf
 
-                        <a class="font-medium text-sm text-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400 flex items-center py-1 px-3" href="{{ route('logout') }}" @click.prevent="$root.submit();" @focus="open = true" @focusout="open = false">
+                        <a class="font-medium text-sm text-red-500 hover:text-indigo-600 dark:hover:text-red-400 flex items-center py-1 px-3" href="{{ route('logout') }}" @click.prevent="$root.submit();" @focus="open = true" @focusout="open = false">
                             {{ __('Sign Out') }}
                         </a>
                     </form>
