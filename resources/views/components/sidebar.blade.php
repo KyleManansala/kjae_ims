@@ -89,31 +89,7 @@
                     </li>
                 </ul>
 
-
-
-                <ul class="mt-3">
-                    <!-- Reports -->
-                    @php
-                    $reportsActive = in_array(Request::segment(1), ['reports']);
-                    @endphp
-                    <li class="px-3 py-2 rounded-sm mb-0.5 last:mb-0 {{ $reportsActive ? 'bg-slate-800' : '' }}" x-data="{ open: {{ $reportsActive ? 1 : 0 }} }">
-                        <a class="block text-white hover:text-slate-200 transition duration-150 truncate @if(Route::is('weather')){{ 'text-white' }}@endif" href="{{ route('reports') }}">
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart-2">
-                                        <line x1="18" y1="20" x2="18" y2="10"></line>
-                                        <line x1="12" y1="20" x2="12" y2="4"></line>
-                                        <line x1="6" y1="20" x2="6" y2="14"></line>
-                                    </svg>
-
-                                    <span class="text-sm font-medium ml-3 lg:opacity-100 2xl:opacity-100 duration-200">Reports</span>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-
-                
+             
                 <ul class="mt-3">
                     <!-- Tips -->
                     @php

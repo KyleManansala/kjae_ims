@@ -17,8 +17,17 @@
     </x-slot>
      <!-- Include SweetAlert-->
      @include('sweetalert::alert')
-     
-    <button onclick="showModal()" class="bg-slate-800 hover:bg-slate-900 text-white font-bold py-2 px-4 rounded">Add Product</button>
+    
+     <!-- Buttons -->
+        <div style="display: flex; justify-content: space-between;">
+            <div>
+                <button onclick="showModal()" class="bg-slate-800 hover:bg-slate-900 text-white font-bold py-2 px-4 rounded">Add Product</button>
+            </div>
+            <div>
+                <button onclick="generateReport()" class="bg-slate-800 hover:bg-slate-900 text-white font-bold py-2 px-4 rounded">Download Inventory Report</button>
+            </div>
+    </div>
+
     
     <!-- datatable -->
      @include('inventory.inventory-items')
@@ -138,14 +147,15 @@
 
 			var table = $('#productsTable').DataTable({
 					responsive: true
-                    // lengthMenu: [ [10, 25, 50, -1], [10, 25, 50, "All"] ], // Define available page lengths
-                    // pageLength: 10 // Set the default page length
-				})
-                
-				.columns.adjust()
-				.responsive.recalc();
+				}).columns.adjust().responsive.recalc();
 		});
 
+        function generateReport() {
+        var confirmed = confirm("Do you want to generate and download the inventory report?");
+        if (confirmed) {
+            window.location.href = "{{ route('generate.report') }}";
+        }
+    }
     </script>
 
 

@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Inventory;
 use App\Models\Category;
 use RealRashid\SweetAlert\Facades\Alert;
+use Dompdf\Dompdf;
+
 
 class InventoryController extends Controller
 {
@@ -16,6 +18,15 @@ class InventoryController extends Controller
         $categories = Category::all();
         $inventories = Inventory::with('category')->get();
         
+        foreach ($categories as $category) {
+            $totalQuantity = $category->inventory->sum('product_quantity');
+            $categoriesWithTotalQuantity[] = [
+                'category' => $category,
+                'total_quantity' => $totalQuantity
+            ];
+        }
+
+
         return view('inventory.inventory', compact('inventories', 'categories'));
     }
 
@@ -61,7 +72,6 @@ class InventoryController extends Controller
     //Update
     public function update(Request $request, Inventory $inventory)
     {
-        // Insert Validation
         $inventory->product_name = $request->productName;
         $inventory->category_id = $request->category;
         $inventory->product_quantity = $request->productQuantity;
@@ -82,7 +92,32 @@ class InventoryController extends Controller
             }
              catch (\Exception $e) {
                 
-             }
-        
+             }       
+    }
+
+    //Generate PDF
+    public function generateReport()
+    {
+        $categories = Category::with('inventory')->get();
+    
+        $pdf = new Dompdf();
+        $pdf->setOptions(new Options());
+        $dateAndTime = now()->format('M d, Y \a\\t H:i:s');
+        $pdfContent = '<h1>KJAE Agricultural Supplies Trading Inventory Report - ' . $dateAndTime . '</h1>';
+    
+        foreach ($categories as $category) {
+            $pdfContent .= '<h2>' . $category->category_name . '</h2>';
+    
+            foreach ($category->inventory as $product) {
+                $pdfContent .= '<p>' . $product->product_name . ' - Quantity: ' . '<b>' . $product->product_quantity . '</b>' . '</p>';
+            }
+        }
+    
+        $pdf->loadHtml($pdfContent);
+        $pdf->render();
+    
+        $filename = 'KJAE_IMS ' . now()->format('Y m d H:i:s') . '.pdf';
+    
+        $pdf->stream($filename);
     }
 }

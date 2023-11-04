@@ -7,10 +7,9 @@
 		/*Form fields*/
 		.dataTables_wrapper select,
 		.dataTables_wrapper .dataTables_filter input {
-            cursor: pointer;
 			color: #4a5568 !important; 
 			padding-left: 1rem !important; 
-			padding-right: 1rem !important;
+			padding-right: 2rem !important;
 			padding-top: .5rem !important;
 			padding-bottom: .5rem !important;
 			line-height: 1.25 !important;

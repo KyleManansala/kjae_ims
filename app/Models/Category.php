@@ -11,10 +11,10 @@ class Category extends Model
 {
     use HasFactory;
 
-    // Define relationships, if any
+
     public function inventory()
     {
-        return $this->hasMany(Inventory::class, 'category_id', 'category_id');
+        return $this->hasMany(Inventory::class, 'category_id', 'id');
     }
 
     protected $fillable = [
