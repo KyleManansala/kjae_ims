@@ -3,17 +3,6 @@
 ]) -->
 
     <div class="relative inline-flex" x-data="{ open: false }">
-        
-        {{-- <!-- Notification bell -->
-        <button class="ml-2 mr-4 inline-flex justify-center items-center group" aria-label="Notifications" @click.prevent="openNotifications()">
-                <!-- Bell icon -->
-                <svg class="w-6 h-6 fill-white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
-                    <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-                </svg>
-        </button> --}}
-        <!-- Your existing content -->
-
         <!-- Notification bell -->
 <div class="relative inline-flex" x-data="{ showNotifications: false }" @click.away="showNotifications = false">
     <button class="ml-2 mr-4 inline-flex justify-center items-center group relative" aria-label="Notifications" x-on:click="showNotifications = !showNotifications">
