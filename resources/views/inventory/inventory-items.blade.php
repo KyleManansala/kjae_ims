@@ -102,7 +102,7 @@
 							<td class="text-center text-sm">{{ ($inventory->updated_at)->diffForHumans() }}</td>
                             <td class="text-center text-sm">
                                 <div class="flex">
-                                    <button onclick="showEditModal('{{ $inventory->id }}')" class="bg-orange-600 hover:bg-orange-700 text-white font-bold h-10 py-1 px-3 rounded mr-2">Edit</button>
+                                    <button onclick="showEditModal('{{ $inventory->id }}')" class="bg-slate-800 hover:bg-slate-900 text-white font-bold h-10 py-1 px-3 rounded mr-2">Edit</button>
 									<form method="POST" action="{{ route('inventory.destroy', $inventory) }}" onsubmit="return confirm('Are you sure you want to delete this item?')">
 										@csrf
 										@method('DELETE')

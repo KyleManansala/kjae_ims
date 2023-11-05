@@ -6,6 +6,7 @@
     use App\Http\Controllers\CategoryController;
     use App\Http\Controllers\WeatherController;
     use App\Http\Controllers\ReportController;
+    use App\Http\Controllers\NotificationController;
     use Illuminate\Support\Facades\Route;
 
     /*
@@ -29,6 +30,7 @@
     Route::resource("inventory", InventoryController::class);
     Route::get('/download-report', [InventoryController::class, 'generateReport'])->middleware(['auth', 'verified'])->name('generate.report');
 
+    Route::get('/notification/bell', [InventoryController::class, 'showNotificationContent'])->middleware('auth', 'verified');
 
     //category
     Route::resource("category", CategoryController::class);

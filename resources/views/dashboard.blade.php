@@ -1,4 +1,4 @@
-<title>Dashboard</title>
+
 <x-app-layout>
     <x-slot name="header">
         <x-header title="Dashboard" />

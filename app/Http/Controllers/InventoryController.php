@@ -8,6 +8,7 @@ use App\Models\Inventory;
 use App\Models\Category;
 use RealRashid\SweetAlert\Facades\Alert;
 use Dompdf\Dompdf;
+use Dompdf\Options;
 
 
 class InventoryController extends Controller
@@ -119,5 +120,11 @@ class InventoryController extends Controller
         $filename = 'KJAE_IMS ' . now()->format('Y m d H:i:s') . '.pdf';
     
         $pdf->stream($filename);
+    }
+
+    public function showNotificationContent()
+    {
+        $productsWithZeroQuantity = Inventory::where('product_quantity', 0)->get();
+        return view('navbar.navbar-profile', compact('productsWithZeroQuantity'));
     }
 }

@@ -11,7 +11,7 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css','resources/js/app.js'])
         <!-- title -->
-        {{-- <title>{{ ucwords(str_replace([".", "-", "client", "admin", "index", "edit", "show", "create"], " ", Route::current()->getName()))." | ".config('app.name', 'Laravel') }}</title> --}}
+        <title>{{ ucwords(str_replace([".", "-", "index"], " ", Route::current()->getName()))." | ".config('app.name', 'Laravel') }}</title>
         
     </head>
     <body class="font-sans antialiased">
