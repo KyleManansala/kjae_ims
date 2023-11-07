@@ -30,7 +30,7 @@
     Route::resource("inventory", InventoryController::class);
     Route::get('/download-report', [InventoryController::class, 'generateReport'])->middleware(['auth', 'verified'])->name('generate.report');
 
-    Route::get('/notification/bell', [InventoryController::class, 'showNotificationContent'])->middleware('auth', 'verified');
+
 
     //category
     Route::resource("category", CategoryController::class);

@@ -121,10 +121,4 @@ class InventoryController extends Controller
     
         $pdf->stream($filename);
     }
-
-    public function showNotificationContent()
-    {
-        $productsWithZeroQuantity = Inventory::where('product_quantity', 0)->get();
-        return view('navbar.navbar-profile', compact('productsWithZeroQuantity'));
-    }
 }

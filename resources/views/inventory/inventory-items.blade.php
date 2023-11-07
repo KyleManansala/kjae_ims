@@ -97,7 +97,7 @@
                             <td class="text-center text-sm">{{ $inventory->product_name }}</td>
                             <td class="text-center text-sm">{{ optional($inventory->category)->category_name }}</td>
                             <td class="text-center text-sm">{{ $inventory->product_quantity }}</td>
-                            <td class="text-center text-sm">PHP {{ $inventory->price }}</td>
+                            <td class="text-center text-sm">{{ number_format($inventory->price, 2, '.', ',') }}</td>
 							<td class="text-center text-sm">{{ ($inventory->created_at)->format('M d, Y H:i:s') }}</td>
 							<td class="text-center text-sm">{{ ($inventory->updated_at)->diffForHumans() }}</td>
                             <td class="text-center text-sm">

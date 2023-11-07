@@ -3,32 +3,16 @@
 ]) -->
 
     <div class="relative inline-flex" x-data="{ open: false }">
-        <!-- Notification bell -->
-<div class="relative inline-flex" x-data="{ showNotifications: false }" @click.away="showNotifications = false">
-    <button class="ml-2 mr-4 inline-flex justify-center items-center group relative" aria-label="Notifications" x-on:click="showNotifications = !showNotifications">
-        <svg class="w-6 h-6 fill-white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
-            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-        </svg>
-        <div class="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-red-500"></div>
-    </button>
+        <!-- Alert icon -->
+        <div class="relative inline-flex" x-data="{ showNotifications: false }" @click.away="showNotifications = false">
+            <button class="ml-2 mr-4 inline-flex justify-center items-center group relative" aria-label="Notifications" x-on:click="showNotifications = !showNotifications">
+                <svg class="w-7 h-7" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="10" fill="none" stroke="red" stroke-width="2"></circle>
+                    <text x="50%" y="50%" text-anchor="middle" alignment-baseline="middle" font-size="16" fill="red">!</text>
+                </svg>
+            </button>
+    
 
-    <!-- Content -->
-    <div x-show="showNotifications" id="notificationDropdown" class="absolute mt-10 bg-white shadow-md">
-        <div class="pt-2 px-3 text-sm">
-            <p class="font-medium">Products with zero stocks:</p>
-            <ul>
-                {{-- @if($productsWithZeroQuantity->count() > 0)
-                    @foreach($productsWithZeroQuantity as $inventory)
-                        <li>{{ $inventory->product_name }}</li>
-                    @endforeach
-                @else
-                    <li>No products have zero stocks.</li>
-                @endif --}}
-            </ul>
-        </div>
-    </div>
-</div>
 
 
         <!-- Profile icon -->
@@ -44,6 +28,23 @@
             </div>
         </button>
         
+        <!-- Alert content -->
+        <div x-show="showNotifications" class="absolute top-12 right-4 p-4 bg-white border shadow overflow-auto max-h-60">
+            @if($noStock->isNotEmpty())
+                <h4 class="text-red-500 font-bold">Alert!</h4>
+                <ul>
+                    @foreach($noStock as $product)
+                        <li>
+                            <span class="text-sm text-black">{{ $product->product_name }}</span> - 
+                            <span class="tex-sm text-red-500">In stock: {{ $product->product_quantity }}</span>
+                        </li>
+                    @endforeach
+                </ul>
+            @else
+                <p>No alerts for now.</p>
+            @endif
+        </div>
+    </div>
 
         
         <div x-show="open" 
@@ -76,24 +77,6 @@
                 </li>
             </ul>
         </div>
-
-        <script>
-            // For controlling the notification dropdown visibility
-            function openNotifications() {
-                const dropdown = document.getElementById('notificationDropdown');
-                dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
-            }
-        
-            // For controlling the click outside the container
-            window.addEventListener('click', function(event) {
-                const notificationContainer = document.getElementById('notificationContainer');
-                const notificationDropdown = document.getElementById('notificationDropdown');
-        
-                if (event.target !== notificationContainer && !notificationContainer.contains(event.target)) {
-                    notificationDropdown.style.display = 'none';
-                }
-            });
-        </script>
     </div>
 
 

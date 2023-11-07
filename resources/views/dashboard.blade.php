@@ -14,19 +14,24 @@
                 </div>
             </div>
 
-            <!-- Categories -->
-            <div class="mt-4">
-                @foreach($productsTotalQty as $categoryData)
-                    <div class="bg-white text-black rounded-b-lg border-t-8 border-slate-800 overflow-hidden shadow-sm sm:rounded-lg mb-4 p-8">
-                        <div>
-                            <h2 class="text-xl font-semibold">{{ $categoryData['category']->category_name }}</h2>
-                            <p class="text-lg">Total Product Quantity: </p>
-                            <p class="text-lg text-green-800 font-bold">= {{ $categoryData['total_quantity'] }}</p>
+            <!-- Display Overview -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:py-8 lg:px-8">
+                <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Stocks Per Product Category</h2>
+                <div class="grid grid-cols-1 gap-5 sm:grid-cols-3 mt-4">
+                    @foreach($productsTotalQty as $categoryData)
+                    <div class="bg-white overflow-hidden shadow sm:rounded-lg h-auto"> 
+                        <div class="px-4 py-6 sm:p-8"> 
+                            <dl>
+                                <p class="text-base leading-6 font-medium text-gray-900">{{ $categoryData['category']->category_name }}</p>
+                                <p class="mt-2 text-3xl leading-9 font-semibold text-green-600">{{ $categoryData['total_quantity'] }}</p>
+                            </dl>
                         </div>
                     </div>
-                @endforeach
+                    @endforeach
+                </div>
             </div>
 
+            
           
         </div>
     </div>
