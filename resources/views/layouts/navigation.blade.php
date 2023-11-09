@@ -13,11 +13,6 @@
                         </svg>
                     </button>
                 </div>
-
-                <!-- Logo -->
-
-                <!-- Navigation Links -->
-
             </div>
             <div class="flex items-center space-x-3">
                 <!-- Settings Dropdown -->

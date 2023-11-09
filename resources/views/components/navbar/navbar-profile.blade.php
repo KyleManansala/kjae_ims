@@ -12,9 +12,6 @@
                 </svg>
             </button>
     
-
-
-
         <!-- Profile icon -->
         <button class="inline-flex justify-center items-center group" aria-haspopup="true" @click.prevent="open = !open" :aria-expanded="open">
             <div class="w-8 h-8 rounded-full bg-white text-slate-700 border-slate-900 flex items-center justify-center">

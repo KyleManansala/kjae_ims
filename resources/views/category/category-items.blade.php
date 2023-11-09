@@ -95,7 +95,7 @@
                             <td class="text-center text-sm px-6 py-4">{{ $category->category_name }}</td>
                             <td>
                             <div class="flex justify-center">
-                                    <button onclick="showEditModal('{{ $category->id }}')" class="bg-orange-600 hover:bg-orange-700 text-white font-bold h-10 py-1 px-3 rounded mr-2">Edit</button>
+                                    <button onclick="showEditModal('{{ $category->id }}')" class="bg-slate-800 hover:bg-slate-900 text-white font-bold h-10 py-1 px-3 rounded mr-2">Edit</button>
 									<form method="POST" action="{{ route('category.destroy', $category) }}" onsubmit="return confirm('Are you sure you want to delete this item?')">
 										@csrf
 										@method('DELETE')
