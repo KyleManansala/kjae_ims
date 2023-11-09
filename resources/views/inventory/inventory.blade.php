@@ -155,6 +155,22 @@
             window.location.href = "{{ route('generate.report') }}";
         }
     }
+
+    function confirmDelete() {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this.",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('deleteForm').submit(); 
+            }
+        });
+    }
     </script>
 
 

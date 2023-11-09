@@ -120,7 +120,7 @@
 
         <!-- Tips Items-->
         @include('tips.tips-items')
-
+        
         <div class="p-6 mt-4 bg-white rounded-lg shadow-md">
             <h2 class="text-lg font-bold text-black mb-3">References</h2>
             <ul class="text-sm text-gray-700">

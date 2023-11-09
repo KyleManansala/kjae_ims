@@ -103,10 +103,10 @@
                             <td class="text-center text-sm">
                                 <div class="flex">
                                     <button onclick="showEditModal('{{ $inventory->id }}')" class="bg-slate-800 hover:bg-slate-900 text-white font-bold h-10 py-1 px-3 rounded mr-2">Edit</button>
-									<form method="POST" action="{{ route('inventory.destroy', $inventory) }}" onsubmit="return confirm('Are you sure you want to delete this item?')">
+									<form id="deleteForm" method="POST" action="{{ route('inventory.destroy', $inventory) }}">
 										@csrf
 										@method('DELETE')
-										<button type="submit" class="bg-red-600 hover:bg-red-700 text-white font-bold h-10 py-1 px-3 rounded">Delete</button>
+										<button type="button" class="bg-red-600 hover:bg-red-700 text-white font-bold h-10 py-1 px-3 rounded" onclick="confirmDelete()">Delete</button>
 									</form>
                                 </div>
                             </td>
