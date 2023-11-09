@@ -118,6 +118,14 @@
             </div>
         </div>
 
+        <!-- Tips Items-->
         @include('tips.tips-items')
 
+        <div class="p-6 mt-4 bg-white rounded-lg shadow-md">
+            <h2 class="text-lg font-bold text-black mb-3">References</h2>
+            <ul class="text-sm text-gray-700">
+                <li class="text-blue-700"><a href="https://duckduckbro.com/2018/07/planting-calendar-for-the-philippines/" target="_blank" rel="noopener" style="text-decoration: underline;">https://duckduckbro.com/2018/07/planting-calendar-for-the-philippines/</a></li>
+                <li class="text-blue-700"><a href="https://en.wikipedia.org/wiki/Climate_of_the_Philippines" target="_blank" rel="noopener" style="text-decoration: underline;">https://en.wikipedia.org/wiki/Climate_of_the_Philippines</a></li>
+            </ul>
+        </div>
 </x-app-layout>
