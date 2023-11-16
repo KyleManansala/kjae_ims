@@ -2,6 +2,7 @@
     <x-slot name="header">
         <x-header title="Tips for Planting Seasons" />
     </x-slot>
+<div class="overflow-auto">
 <h1 class="text-black font-bold font-large">
     The wet and dry season in the Philippines create 4 different types of climate in the country. Here are the
     four types of climate in the Philippines:
@@ -128,4 +129,5 @@
                 <li class="text-blue-700"><a href="https://en.wikipedia.org/wiki/Climate_of_the_Philippines" target="_blank" rel="noopener" style="text-decoration: underline;">https://en.wikipedia.org/wiki/Climate_of_the_Philippines</a></li>
             </ul>
         </div>
+</div>
 </x-app-layout>

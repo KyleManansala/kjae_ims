@@ -1,3 +1,4 @@
+<div class="overflow-auto">
 <h3 class="text-2xl font-bold text-black mt-10 mb-4">Plants for Type Four Climate</h3>
     <table class="min-w-full divide-y divide-gray-200">
         <thead class="bg-green-900">
@@ -330,3 +331,4 @@
             </tr>   
         </tbody>
     </table>
+</div>

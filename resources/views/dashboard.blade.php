@@ -1,4 +1,3 @@
-
 <x-app-layout>
     <x-slot name="header">
         <x-header title="Dashboard" />
@@ -16,7 +15,6 @@
 
             <!-- Display Overview -->
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:py-8 lg:px-8">
-                <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Stocks Per Product Category</h2>
                 <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 mt-4">
                     @foreach($productsTotalQty as $categoryData)
                     <div class="bg-white overflow-hidden shadow sm:rounded-lg h-auto"> 
@@ -29,10 +27,9 @@
                     </div>
                     @endforeach
                 </div>
-            </div>
-
-            
-          
+            </div>        
         </div>
     </div>
 </x-app-layout>
+
+
