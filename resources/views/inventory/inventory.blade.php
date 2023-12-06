@@ -10,7 +10,7 @@
 
 
 <!-- Main Page -->
-<x-app-layout>
+<x-app-layout >
     <x-slot name="header">
         <x-header title="Inventory" />
     </x-slot>
@@ -18,14 +18,16 @@
      @include('sweetalert::alert')
     
      <!-- Buttons -->
-        <div style="display: flex; justify-content: space-between;">
+     <div class="flex justify-end mb-5">
+     <div class="flex self-end gap-2">
             <div>
-                <button onclick="showModal()" class="bg-slate-800 hover:bg-slate-900 text-white font-bold py-2 px-4 rounded">Add Product</button>
+                <button onclick="showModal()" class="bg-primary-100 hover:bg-primary-200 text-white font-bold py-2 px-4 rounded">Add Product</button>
             </div>
             <div>
-                <button onclick="generateReport()" class="bg-slate-800 hover:bg-slate-900 text-white font-bold py-2 px-4 rounded">Download Inventory Report</button>
+                <button onclick="generateReport()" class="bg-primary-100 hover:bg-primary-200 text-white font-bold py-2 px-4 rounded">Download Report</button>
             </div>
     </div>
+     </div>
 
     
     <!-- datatable -->

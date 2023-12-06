@@ -78,7 +78,7 @@
   
   <!-- Table -->
   <div class="container mx-auto my-4">
-        <div class="p-8 mt-6 lg:mt-0 rounded shadow bg-white overflow-x-auto">
+        <div class="p-8 mt-6 lg:mt-0 rounded shadow bg-white overflow-x-auto" >
                 <table id="productsTable" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                     <thead>
                         <tr>

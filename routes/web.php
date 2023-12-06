@@ -39,6 +39,8 @@
         return view('tips.tips');
     })->middleware(['auth', 'verified'])->name('tips');
 
+    //dashboard
+    Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
     //Display weather
     Route::get('/weather', [WeatherController::class, 'checkWeather'])->middleware(['auth', 'verified'])->name('weather');
 

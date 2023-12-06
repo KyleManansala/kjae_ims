@@ -22,13 +22,18 @@
         <img class="wave" src="img/wave.png">
         <div class="container">
             <div class="img">
-                <img src="img/bg.svg">
+                <img src="img/avatar.png">
             </div>
 
             <div class="login-content">
           
                 {{ $slot }}
             </div>
+            
+
         </div>
+        
+      
     </body>
+    
 </html>
