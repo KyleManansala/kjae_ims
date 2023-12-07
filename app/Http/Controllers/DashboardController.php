@@ -35,6 +35,4 @@ class DashboardController extends Controller
         // Pass both sets of data to the view
         return view('dashboard', compact('productsTotalQty', 'weatherData'));
     }
-    
-    // Rest of the controller...
 }

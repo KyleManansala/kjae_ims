@@ -8,32 +8,54 @@
 
             @include("components/welcome-dashboard")
 
-            {{-- <div class="bg-green-600 text-white overflow-hidden shadow-sm sm:rounded-lg mb-4">
-                <div class="p-6">
-                    {{ __("Good day! This is what your inventory looks like today!") }}
-                </div>
-            </div> --}}
-
-            
             @include("components/weather")
 
-            <!-- Display Overview -->
-            <div class="max-w-full    lg:py-8 ">
-                <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 mt-4">
-                    @foreach($productsTotalQty as $categoryData)
-                    <div class="bg-white overflow-hidden shadow sm:rounded-lg h-auto"> 
-                        <div class="px-4 py-6 sm:p-8"> 
-                            <dl>
-                                <p class="text-base leading-6 font-medium text-gray-900">{{ $categoryData['category']->category_name }}</p>
-                                <p class="mt-2 text-3xl leading-9 font-semibold text-green-600">{{ $categoryData['total_quantity'] }}</p>
-                            </dl>
-                        </div>
-                    </div>
-                    @endforeach
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mt-10 mb-4">
+                <div class="p-6">
+                    <canvas id="categoryChart" width="400" height="200"></canvas>
                 </div>
-            </div>        
+            </div>
+
         </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            var productsTotalQty = @json($productsTotalQty);
+
+ 
+            var categories = [];
+            var totalQuantities = [];
+
+            productsTotalQty.forEach(function (item) {
+                categories.push(item.category.category_name);
+                totalQuantities.push(item.total_quantity);
+            });
+
+
+            var ctx = document.getElementById('categoryChart').getContext('2d');
+            var categoryChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: categories,
+                    datasets: [{
+                        label: 'Total Product Quantity',
+                        data: totalQuantities,
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        });
+    </script>
 </x-app-layout>
-
-
