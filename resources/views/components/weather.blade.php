@@ -1,7 +1,7 @@
 
 
  
-     <div class="max-w-full mx-auto p-6 bg-blue-950  rounded-xl shadow-xl flex items-start">
+     <div class="max-w-full mx-auto p-6 bg-blue-950  rounded-xl shadow-xl flex items-start mb-4">
          @if($weatherData && array_key_exists('main', $weatherData) && array_key_exists('weather', $weatherData) && array_key_exists('wind', $weatherData))
              @php
                  $convertedTempToCelcius = number_format($weatherData['main']['temp'] - 273.15);
