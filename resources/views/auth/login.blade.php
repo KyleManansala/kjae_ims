@@ -65,8 +65,7 @@
                         class="rounded border-gray-300 text-gray-600 shadow-sm focus:ring-gray-600" name="remember">
                     <span class="ml-2 text-sm text-gray-600 ">{{ __('Remember me') }}</span>
                 </label>
-            </div>
-
+            </div >
            
                 @if (Route::has('password.request'))
                     <a  href="{{ route('password.request') }}">

@@ -24,7 +24,18 @@ export default {
                 },
                 'border':{
                     100:'#F3F4F6'
-                }
+                },
+                'light':{
+                    100:'#FFFFFF'
+
+                },
+
+                'sidenav' :{
+                    100 : "#1F2937",
+                    200 : "#F9FAFB",
+                    300: "#9FA3AF"
+                },
+
             }
            
         },

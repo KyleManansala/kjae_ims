@@ -1,4 +1,4 @@
-<div class=" bg-yellow-400 p-4 sm:p-6 overflow-hidden mb-8  rounded-xl shadow-xl">
+<div class=" bg-sky-600 p-4 sm:p-6 overflow-hidden mb-8  rounded-xl shadow-xl">
     <!-- Background illustration -->
     <div class="absolute right-0 top-0 -mt-4 mr-16 pointer-events-none hidden xl:block" aria-hidden="true">
 

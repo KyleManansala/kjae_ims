@@ -19,7 +19,7 @@
             </div>
             <div class="flex items-center truncate">
                 <span class="truncate ml-2 text-sm font-medium text-white dark:text-white  dark:group-hover:text-slate-600">{{ Auth::user()->name }}</span>
-                <svg class="w-3 h-3 shrink-0 ml-1 fill-current text-slate-400" viewBox="0 0 12 12">
+                <svg class="w-3 h-3 shrink-0 ml-1 fill-current text-white" viewBox="0 0 12 12">
                     <path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z" />
                 </svg>
             </div>
@@ -54,13 +54,13 @@
             x-transition:leave-start="opacity-100" 
             x-transition:leave-end="opacity-0"
             x-cloak 
-            class="origin-top-right z-10 absolute top-full min-w-44 bg-slate-800 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 py-1.5 rounded shadow-lg overflow-hidden mt-1 {{$align === 'right' ? 'right-0' : 'left-0'}}">
+            class="origin-top-right z-10 absolute top-full min-w-44 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 py-1.5 rounded shadow-lg overflow-hidden mt-1 {{$align === 'right' ? 'right-0' : 'left-0'}}">
 
             <div class="pt-0.5 pb-2 px-3 mb-1 border-b border-slate-200 dark:border-slate-700">
-                <div class="font-medium text-white dark:text-slate-100">{{ Auth::user()->name }}</div>
+                <div class="font-medium text-black dark:text-slate-100">{{ Auth::user()->name }}</div>
             </div>
             <ul>
-                <x-dropdown-link class="text-white hover:text-black"  :href="route('profile.edit')">
+                <x-dropdown-link class="text-black hover:text-black"  :href="route('profile.edit')">
                     {{ __('Profile') }}
                 </x-dropdown-link>
                 <li>
