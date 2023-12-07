@@ -7,7 +7,7 @@
     <div id="sidebar" class="flex flex-col absolute z-50 left-0 inset-y-0 lg:translate-x-0 h-auto bg-primary-100 overflow-y-scroll lg:overflow-y-auto no-scrollbar w-64 lg:w-20 lg:sidebar-expanded:!w-64 xl:!w-64 shrink-0 p-4 transition-all duration-200 ease-in-out" :class="sidebarOpen ? 'translate-x-0' : '-translate-x-64'" @click.outside="sidebarOpen = false, sidebarExpanded = false" @keydown.escape.window="sidebarOpen = false" ="lg">
 
         <!-- Sidebar header -->
-        <div class="flex justify-between mb-10 pr-3 sm:px-2">
+        <div class="flex justify-between mb-10 pr-3 sm:px-2" >
             <!-- Close button -->
             <button class="lg:hidden text-slate-50 hover:text-slate-50" @click.stop="sidebarOpen = !sidebarOpen" aria-controls="sidebar" :aria-expanded="sidebarOpen">
                 <span class="sr-only">Close sidebar</span>
@@ -15,17 +15,18 @@
                     <path d="M10.7 18.7l1.4-1.4L7.8 13H20v-2H7.8l4.3-4.3-1.4-1.4L4 12z" />
                 </svg>
             </button>
-            <!-- Logo -->
+           
         </div>
+    
 
         <!-- Links -->
-        <div class="space-y-8">
+        <div class="space-y-10 " >
 
 
             <!-- Pages group -->
             <div>
 
-                <ul class="mt-3">
+                <ul class="mt-6 mb-6">
 
                     <!-- Dashboard -->
                     @php
@@ -46,7 +47,7 @@
                     </li>
                 </ul>
 
-                <ul class="mt-3">
+                <ul class="mt-4 mb-6">
 
                     <!-- Inventory -->
                     @php
@@ -67,7 +68,7 @@
                     </li>
                 </ul>
 
-                <ul class="mt-3">
+                <ul class="mt-4 mb-6">
                     <!-- Category -->
                     @php
                     $categoryActive = in_array(Request::segment(1), ['category']);
@@ -90,7 +91,7 @@
                 </ul>
 
              
-                <ul class="mt-3">
+                <ul class="mt-4 mb-6">
                     <!-- Tips -->
                     @php
                     $tipsActive = in_array(Request::segment(1), ['tips']);
@@ -108,25 +109,7 @@
                     </li>
                 </ul>
 
-                <ul class="mt-3">
-                    <!-- Weather -->
-                    @php
-                    $weatherActive = in_array(Request::segment(1), ['weather']);
-                    @endphp
-                    <li class="px-3 py-2 rounded-sm mb-0.5 last:mb-0 {{ $weatherActive ? 'bg-primary-200' : '' }}" x-data="{ open: {{ $weatherActive ? 1 : 0 }} }">
-                        <a class="block text-white hover:text-slate-200 transition duration-150 truncate @if(Route::is('weather')){{ 'text-white' }}@endif" href="{{ route('weather') }}">
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
-                                    </svg>
-
-                                    <span class="text-sm font-medium ml-3 lg:opacity-100 2xl:opacity-100 duration-200">Weather</span>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
+               
 
 
 

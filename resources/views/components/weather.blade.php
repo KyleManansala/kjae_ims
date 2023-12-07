@@ -1,11 +1,7 @@
 
 
- <x-app-layout>
-     <x-slot name="header">
-         <x-header title="Weather" />
-     </x-slot>
  
-     <div class="max-w-3xl mx-auto p-6 bg-slate-900 rounded-xl shadow-xl flex items-start">
+     <div class="max-w-full mx-auto p-6 bg-blue-950  rounded-xl shadow-xl flex items-start">
          @if($weatherData && array_key_exists('main', $weatherData) && array_key_exists('weather', $weatherData) && array_key_exists('wind', $weatherData))
              @php
                  $convertedTempToCelcius = number_format($weatherData['main']['temp'] - 273.15);
@@ -35,6 +31,5 @@
              <p class="text-3xl">No weather information available</p>
          @endif
      </div>
- </x-app-layout>
- 
+
  

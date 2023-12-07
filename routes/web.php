@@ -24,8 +24,6 @@
         return view('welcome');
     });
 
-    Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
-
     //inventory
     Route::resource("inventory", InventoryController::class);
     Route::get('/download-report', [InventoryController::class, 'generateReport'])->middleware(['auth', 'verified'])->name('generate.report');
@@ -41,9 +39,7 @@
 
     //dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
-    //Display weather
-    Route::get('/weather', [WeatherController::class, 'checkWeather'])->middleware(['auth', 'verified'])->name('weather');
-
+   
     //Profile
     Route::middleware('auth')->group(function () {
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

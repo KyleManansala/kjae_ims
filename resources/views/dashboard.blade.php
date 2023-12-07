@@ -6,15 +6,19 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
+            @include("components/welcome-dashboard")
 
-            <div class="bg-green-600 text-white overflow-hidden shadow-sm sm:rounded-lg mb-4">
+            {{-- <div class="bg-green-600 text-white overflow-hidden shadow-sm sm:rounded-lg mb-4">
                 <div class="p-6">
                     {{ __("Good day! This is what your inventory looks like today!") }}
                 </div>
-            </div>
+            </div> --}}
+
+            
+            @include("components/weather")
 
             <!-- Display Overview -->
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:py-8 lg:px-8">
+            <div class="max-w-full    lg:py-8 ">
                 <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 mt-4">
                     @foreach($productsTotalQty as $categoryData)
                     <div class="bg-white overflow-hidden shadow sm:rounded-lg h-auto"> 
