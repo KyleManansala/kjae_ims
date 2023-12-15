@@ -10,7 +10,6 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        // Fetch categories and product quantities as before
         $categories = Category::with('inventory')->get();
         $productsTotalQty = [];
 
@@ -32,7 +31,7 @@ class DashboardController extends Controller
 
         $weatherData = json_decode($response->getBody(), true);
 
-        // Pass both sets of data to the view
+
         return view('dashboard', compact('productsTotalQty', 'weatherData'));
     }
 }
